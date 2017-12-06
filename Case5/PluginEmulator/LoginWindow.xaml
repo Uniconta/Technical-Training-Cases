@@ -1,0 +1,17 @@
+﻿<Window x:Class="PluginEmulator.LoginWindow"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:DialogControls="clr-namespace:PluginEmulator" AllowsTransparency="True"
+        Title="Login Uniconta"  WindowStartupLocation="CenterScreen" Background="Transparent"
+        ResizeMode="NoResize"  WindowStyle="None" ShowInTaskbar="False">
+    <Border Background="#90000000">
+        <Border Background="LightGray" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border.BitmapEffect>
+                <DropShadowBitmapEffect Color="Black" Opacity="0.5" Direction="270" ShadowDepth="0.7" />
+            </Border.BitmapEffect>
+            <Grid>
+                <DialogControls:LoginDailog  x:Name="loginCtrl"/>
+            </Grid>
+        </Border>
+    </Border>
+</Window>

@@ -16,4 +16,4 @@ The setup is fairly simple.
 3) You should end up with a path that looks like this: C:\src\Uniconta\Technical-Training-Cases-master
 
 # Setup - Code
-In each solution there will be an API Key TOD, where you will have to change it to your own API Key.
+In each solution there will be an API Key TODO, where you will have to change it to your own API Key.

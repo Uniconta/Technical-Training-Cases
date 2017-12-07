@@ -13,6 +13,9 @@ namespace TableCreator
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Fields
+        private TableHeader MyNewTable;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,7 +36,7 @@ namespace TableCreator
             // TODO: Hack for reloading crudAPI.CompanyEntity.UserTables
             //await UnicontaAPIManager.SetCurrentCompany(UnicontaAPIManager.GetCurrentCompanyId());
 
-            TableHeader newTable = new TableHeader
+            this.MyNewTable = new TableHeader
             {
                 _Attachment = true,
                 _UserDefinedId = 2750,
@@ -44,7 +47,7 @@ namespace TableCreator
                 _MenuPosition = 7,
             };
 
-            var errorCode = await crudAPI.Insert(newTable);
+            var errorCode = await crudAPI.Insert(this.MyNewTable);
             if(errorCode != ErrorCodes.Succes)
             {
                 MessageBox.Show("ERROR: Failed to create table");
@@ -58,12 +61,14 @@ namespace TableCreator
         {
             var crudAPI = UnicontaAPIManager.GetCrudAPI();
 
+            /*
             var table = crudAPI.CompanyEntity.UserTables.SingleOrDefault(t => t._Name == "MyNewTable");
             if (table == null)
             {
                 MessageBox.Show("ERROR: Cant find table MyNewTable");
                 return;
             }
+            */
             
             var newFields = new List<TableField>();
 
@@ -74,7 +79,7 @@ namespace TableCreator
                 _Prompt = "My string field",
                 _FieldType = CustomTypeCode.String
             };
-            newStringField.SetMaster(table);
+            newStringField.SetMaster(this.MyNewTable);
             newFields.Add(newStringField);
 
             // Boolean field
@@ -85,7 +90,7 @@ namespace TableCreator
                 _FieldType = CustomTypeCode.Boolean
 
             };
-            newBooleanField.SetMaster(table);
+            newBooleanField.SetMaster(this.MyNewTable);
             newFields.Add(newBooleanField);
 
             // Call insert API

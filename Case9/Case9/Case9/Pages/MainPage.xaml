@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Case9"
+             x:Class="Case9.Pages.MainPage">
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand">
+            <Label x:Name="WelcomeMessage" />
+
+            <Label Text="Company"/>
+            <Picker x:Name="CompanyPicker" Title="Select Company"></Picker>
+
+            <Label Text="Customer"/>
+            <Picker x:Name="CustomerPicker" Title="Select Customer"></Picker>
+
+            <Label Text="Total Time:"/>
+            <Label x:Name="TotalTime"/>
+            
+            <Button x:Name="ToggleButton" Text="Start Time"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

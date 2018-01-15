@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TableCreator.Core.Managers;
 
 namespace UnicontaWrapper
 {
@@ -23,6 +24,9 @@ namespace UnicontaWrapper
         public MainWindow()
         {
             InitializeComponent();
+
+            var user = UnicontaAPIManager.GetUser();
+            this.TB_UserWelcome.Text = $"Welcome {user._Name}, you are now logged in";
         }
     }
 }

@@ -33,6 +33,10 @@ namespace TableCreator.Core.Managers
             unicontaSession = new Session(unicontaConnection);
         }
 
+        #region Get / Set Methods
+        public static User GetUser() { return unicontaSession.User; }
+        #endregion
+
         #region Login Methods
         public async static Task<ErrorCodes> Login(string username, string password)
         {

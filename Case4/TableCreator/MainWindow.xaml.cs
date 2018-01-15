@@ -50,6 +50,7 @@ namespace TableCreator
                 _Name = "TrackGenres",
                 _Prompt = "Track Genres",
                 _MenuPosition = 3,
+                _UserDefinedId = 2050,
 
                 // Settings
                 _EditLines = true
@@ -83,6 +84,7 @@ namespace TableCreator
                 _Name = "Tracks",
                 _Prompt = "Tracks",
                 _MenuPosition = 3,
+                _UserDefinedId = 2051,
 
                 // Settings
                 _EditLines = true

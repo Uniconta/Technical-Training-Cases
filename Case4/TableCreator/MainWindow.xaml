@@ -8,8 +8,8 @@
         Title="MainWindow" Height="350" Width="300">
     <Grid>
         <DockPanel LastChildFill="False">
-            <Button x:Name="B_CreateTable" DockPanel.Dock="Top" Content="Create Table" Height="40" Margin="0,5,0,0"/>
-            <Button x:Name="B_CreateFields" DockPanel.Dock="Top" Content="Create Fields" Height="40" Margin="0,5,0,0"/>
+            <Button Click="Button_TrackGenres" DockPanel.Dock="Top" Content="Create Track Genres Table" Height="40" Margin="0,5,0,0"/>
+            <Button Click="Button_Tracks" DockPanel.Dock="Top" Content="Create Tracks Table" Height="40" Margin="0,5,0,0"/>
         </DockPanel>
     </Grid>
 </Window>

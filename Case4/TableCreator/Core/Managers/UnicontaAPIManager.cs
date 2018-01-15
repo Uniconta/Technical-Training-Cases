@@ -13,9 +13,6 @@ namespace TableCreator.Core.Managers
     public static class UnicontaAPIManager
     {
         // Fields
-        private static string username;
-        private static string password;
-
         private static Guid accessGuid;
         private static UnicontaConnection unicontaConnection;
         private static Session unicontaSession;
@@ -46,10 +43,6 @@ namespace TableCreator.Core.Managers
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return ErrorCodes.NoSucces;
-
-            // Saving username / password for later use
-            UnicontaAPIManager.username = username;
-            UnicontaAPIManager.password = password;
 
             return await unicontaSession.LoginAsync(username, password, LoginType.API, accessGuid);
         }
@@ -85,6 +78,8 @@ namespace TableCreator.Core.Managers
         
         public static int GetCurrentCompanyId() { return currentCompany.CompanyId; }
         public static Company GetCurrentCompany() { return currentCompany; }
+
+        public static Company GetCompanyByName(string companyName) { return companies.SingleOrDefault(c => c.Name == companyName); }
 
         public async static Task SetCurrentCompany(Company company) { await SetCurrentCompany(company.CompanyId); }
         public async static Task SetCurrentCompany(int companyId)

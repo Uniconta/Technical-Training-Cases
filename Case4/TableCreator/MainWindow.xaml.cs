@@ -19,90 +19,159 @@ namespace TableCreator
         public MainWindow()
         {
             InitializeComponent();
-
-            // Events
-            this.B_CreateTable.Click += B_CreateTable_Click;
-            this.B_CreateFields.Click += B_CreateFields_Click;
         }
+        
+        // MenuPosition
+        // 0 = General Ledger
+        // 1 = Customer
+        // 2 = Vendor
+        // 3 = Inventory
+        // 4 = Project
+        // 5 = Company
+        // 6 = Tools
+        // 7 = None
+        // 8 = CRM
 
-        #region Events
-        private async void B_CreateTable_Click(object sender, RoutedEventArgs e)
+        private async void Button_TrackGenres(object sender, RoutedEventArgs e)
         {
-            // TODO: are we in right company ??
-            // await UnicontaAPIManager.SetCurrentCompany(8936);
+            //TODO: Change to test Company
+            var company = UnicontaAPIManager.GetCompanyByName("TT-WEEK3");
+            var crudAPI = UnicontaAPIManager.GetCrudAPI(company);
 
-            var crudAPI = UnicontaAPIManager.GetCrudAPI();
-
-            // TODO: Hack for reloading crudAPI.CompanyEntity.UserTables
-            //await UnicontaAPIManager.SetCurrentCompany(UnicontaAPIManager.GetCurrentCompanyId());
-
-            this.MyNewTable = new TableHeader
+            // TrackGenres
+            var trackGenres = new TableHeader
             {
-                _Attachment = true,
-                _UserDefinedId = 2750,
-                _Name = "MyNewTable",
-                _Prompt = "My new table",
+                // Key
                 _HasPrimaryKey = true,
-                _PKprompt = "MyNewTableId",
-                _MenuPosition = 7,
+                _PKprompt = "TrackGenreId",
+                _AutoKey = true,
+
+                // Description
+                _Name = "TrackGenres",
+                _Prompt = "Track Genres",
+                _MenuPosition = 3,
+
+                // Settings
+                _EditLines = true
             };
 
-            var errorCode = await crudAPI.Insert(this.MyNewTable);
+            var errorCode = await crudAPI.Insert(trackGenres);
             if(errorCode != ErrorCodes.Succes)
             {
-                MessageBox.Show("ERROR: Failed to create table");
+                MessageBox.Show($"Failed to insert Track Genres {errorCode.ToString()}");
                 return;
             }
             else
-                MessageBox.Show("Table has been created");
+                MessageBox.Show("Track Genres table has been created");
         }
 
-        private async void B_CreateFields_Click(object sender, RoutedEventArgs e)
+        private async void Button_Tracks(object sender, RoutedEventArgs e)
         {
-            var crudAPI = UnicontaAPIManager.GetCrudAPI();
+            //TODO: Change to test Company
+            var company = UnicontaAPIManager.GetCompanyByName("TT-WEEK3");
+            var crudAPI = UnicontaAPIManager.GetCrudAPI(company);
 
-            /*
-            var table = crudAPI.CompanyEntity.UserTables.SingleOrDefault(t => t._Name == "MyNewTable");
-            if (table == null)
+            // Tracks
+            var tracks = new TableHeader
             {
-                MessageBox.Show("ERROR: Cant find table MyNewTable");
-                return;
-            }
-            */
-            
-            var newFields = new List<TableField>();
+                // Key
+                _HasPrimaryKey = true,
+                _PKprompt = "TrackId",
+                _AutoKey = true,
 
-            // String field
-            var newStringField = new TableField
-            {
-                _Name = "MyStringField",
-                _Prompt = "My string field",
-                _FieldType = CustomTypeCode.String
+                // Description
+                _Name = "Tracks",
+                _Prompt = "Tracks",
+                _MenuPosition = 3,
+
+                // Settings
+                _EditLines = true
             };
-            newStringField.SetMaster(this.MyNewTable);
-            newFields.Add(newStringField);
 
-            // Boolean field
-            var newBooleanField = new TableField
-            {
-                _Name = "MyBooleanField",
-                _Prompt = "My boolean field",
-                _FieldType = CustomTypeCode.Boolean
-
-            };
-            newBooleanField.SetMaster(this.MyNewTable);
-            newFields.Add(newBooleanField);
-
-            // Call insert API
-            var errorCode = await crudAPI.Insert(newFields);
+            // Inserting Table
+            var errorCode = await crudAPI.Insert(tracks);
             if (errorCode != ErrorCodes.Succes)
             {
-                MessageBox.Show("ERROR: Failed to create fields");
+                MessageBox.Show($"Failed to insert Tracks {errorCode.ToString()}");
                 return;
             }
             else
-                MessageBox.Show("Fields has been created");
+                MessageBox.Show("Tracks table has been created");
+
+            // Creating Fields
+            var tracksFields = new List<TableField>();
+
+            // Title
+            var trackTitle = new TableField
+            {
+                _Name = "Title",
+                _Prompt = "Title",
+                _FieldType = CustomTypeCode.String
+            };
+            trackTitle.SetMaster(tracks);
+            tracksFields.Add(trackTitle);
+
+            // Artist 
+            var trackArtist = new TableField
+            {
+                _Name = "Artist",
+                _Prompt = "Artist",
+                _FieldType = CustomTypeCode.String
+            };
+            trackArtist.SetMaster(tracks);
+            tracksFields.Add(trackArtist);
+
+            // Genre 
+            var trackGenre = new TableField
+            {
+                _Name = "Genre",
+                _Prompt = "Genre",
+                _FieldType = CustomTypeCode.String,
+                _RefTable = "TrackGenres"
+            };
+            trackGenre.SetMaster(tracks);
+            tracksFields.Add(trackGenre);
+
+            // Vibe 
+            var trackVibe = new TableField
+            {
+                _Name = "Vibe",
+                _Prompt = "Vibe",
+                _FieldType = CustomTypeCode.Enum,
+                _Format = "Dance;Up-beat;Soft;Slow;"
+            };
+            trackVibe.SetMaster(tracks);
+            tracksFields.Add(trackVibe);
+
+            // Length 
+            var trackLength = new TableField
+            {
+                _Name = "Length",
+                _Prompt = "Length",
+                _FieldType = CustomTypeCode.Integer,
+            };
+            trackLength.SetMaster(tracks);
+            tracksFields.Add(trackLength);
+
+            // LicensePaid 
+            var trackLicensePaid = new TableField
+            {
+                _Name = "LicensePaid",
+                _Prompt = "License Paid",
+                _FieldType = CustomTypeCode.Boolean,
+            };
+            trackLicensePaid.SetMaster(tracks);
+            tracksFields.Add(trackLicensePaid);
+            
+            // Inserting Fields
+            var fieldsErrorCode = await crudAPI.Insert(tracksFields);
+            if (fieldsErrorCode != ErrorCodes.Succes)
+            {
+                MessageBox.Show($"Failed to insert Tracks {errorCode.ToString()}");
+                return;
+            }
+            else
+                MessageBox.Show("Tracks table has been created");
         }
-        #endregion
     }
 }

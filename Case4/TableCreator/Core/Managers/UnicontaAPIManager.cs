@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -80,6 +81,8 @@ namespace TableCreator.Core.Managers
         public static Company GetCurrentCompany() { return currentCompany; }
 
         public static Company GetCompanyByName(string companyName) { return companies.SingleOrDefault(c => c.Name == companyName); }
+        public static Company GetCompanyById(int companyId) { return companies.SingleOrDefault(c => c.CompanyId == companyId); }
+
 
         public async static Task SetCurrentCompany(Company company) { await SetCurrentCompany(company.CompanyId); }
         public async static Task SetCurrentCompany(int companyId)

@@ -325,7 +325,7 @@ namespace LoadPluginEmulator
             string res = string.Empty;
 
             // TODO: Change this to the direct path
-            var pluginPath = @"C:\src\Uniconta\Technical-Training-Cases-master\Case5\ZendoPlugins\bin\Debug\ZendoPlugins.dll";
+            var pluginPath = @"C:\src\Uniconta\Technical-Training-Cases-master\Case1\ZendoPlugins\bin\Debug\ZendoPlugins.dll";
             var plugin = Plugin.LoadAssembly(pluginPath);
 
             if (plugin != null)

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6C3775BB-DA65-47E4-BBA1-178D60EBFA23}</ProjectGuid>
+    <ProjectGuid>{20A8D5F7-5C0D-4435-8FC7-501E263CE8FA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ZendoImporter</RootNamespace>
-    <AssemblyName>ZendoImporter</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>InvoicingAppWPF</RootNamespace>
+    <AssemblyName>InvoicingAppWPF</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -61,8 +61,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Views\LoginWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -72,12 +72,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\Helpers\CSVUtils.cs" />
     <Compile Include="Core\Managers\UnicontaAPIManager.cs" />
-    <Compile Include="DataModels\MergeCustomer.cs" />
-    <Compile Include="DataModels\MergeItem.cs" />
-    <Compile Include="DataModels\MergeOrder.cs" />
-    <Compile Include="DataModels\MergeOrderItem.cs" />
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>

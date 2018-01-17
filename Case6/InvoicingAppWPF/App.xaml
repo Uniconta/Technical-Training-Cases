@@ -1,7 +1,6 @@
-﻿<Application x:Class="ZendoImporter.App"
+﻿<Application x:Class="InvoicingAppWPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ZendoImporter"
              StartupUri="Views/LoginWindow.xaml">
     <Application.Resources>
          

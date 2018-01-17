@@ -14,10 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Uniconta.ClientTools.DataModel;
 using Uniconta.Common;
+using Uniconta.DataModel;
 using ZendoImporter.Core.Helpers;
 using ZendoImporter.Core.Managers;
 
-namespace ZendoImporter
+namespace ZendoImporter.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -28,17 +29,27 @@ namespace ZendoImporter
         {
             InitializeComponent();
 
-            // Events
-            this.B_Customers.Click += B_Customers_Click;
-            this.B_Items.Click += B_Items_Click;
-            this.B_Orders.Click += B_Orders_Click;
+            this.CB_Company.ItemsSource = UnicontaAPIManager.GetCompanies();
+            this.CB_Company.SelectedItem = UnicontaAPIManager.GetCurrentCompany();
+            this.CB_Company.SelectionChanged += CB_Company_SelectionChanged;
         }
+        
+        #region Event Methods
+        private async void CB_Company_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Setting Company
+            var company = this.CB_Company.SelectedItem as Company;
+            await UnicontaAPIManager.SetCurrentCompany(company);
+        }
+        #endregion
 
         private async void B_Customers_Click(object sender, RoutedEventArgs e)
         {
+            // Getting CrudAPI
             var crudAPI = UnicontaAPIManager.GetCrudAPI();
             crudAPI.RunInTransaction = false;
 
+            // Parsing CSV
             var customers = CSVUtils.ParseCustomers(@"C:\src\Uniconta\Technical-Training-Cases-master\TrainingData\CompanyData\Finace-Customers.csv");
             PBTB_Customers.Text = $"0/{customers.Count}";
 
@@ -46,8 +57,6 @@ namespace ZendoImporter
             var newDebtorClients = new List<DebtorClient>();
             customers.ForEach(customer =>
             {
-                // TODO: Fix KeyStr being the same
-                //var accountNumber = int.Parse(customer.AccountNumber) + 20000;
                 var accountNumber = customer.AccountNumber;
 
                 newDebtorClients.Add(new DebtorClient
@@ -69,9 +78,11 @@ namespace ZendoImporter
 
         private async void B_Items_Click(object sender, RoutedEventArgs e)
         {
+            // Getting CrudAPI
             var crudAPI = UnicontaAPIManager.GetCrudAPI();
             crudAPI.RunInTransaction = false;
 
+            // Parsing CSV
             var items = CSVUtils.ParseItems(@"C:\src\Uniconta\Technical-Training-Cases-master\TrainingData\CompanyData\Finace-Items.csv");
             PBTB_Items.Text = $"0/{items.Count}";
             
@@ -96,9 +107,11 @@ namespace ZendoImporter
 
         private async void B_Orders_Click(object sender, RoutedEventArgs e)
         {
+            // Getting CrudAPI
             var crudAPI = UnicontaAPIManager.GetCrudAPI();
             crudAPI.RunInTransaction = false;
 
+            // Parsing CSV
             var orders = CSVUtils.ParseOrders(@"C:\src\Uniconta\Technical-Training-Cases-master\TrainingData\CompanyData\Finace-Orders.csv");
             PBTB_Orders.Text = $"0/{orders.Count}";
 
@@ -110,13 +123,12 @@ namespace ZendoImporter
             SQLCache inventoryCache = crudAPI.CompanyEntity.GetCache(typeof(InvItemClient));
             if (inventoryCache == null)
                 inventoryCache = await crudAPI.CompanyEntity.LoadCache(typeof(InvItemClient), crudAPI);
-
-
+            
             // Creating Insert List
             var newDebtorOrderClients = new List<DebtorOrderClient>();
             orders.ForEach(order =>
             {
-                // TODO: Fix KeyStr being the same
+                // Parsing Account Number
                 var accountNumber = (int.Parse(order.AccountNumber) + 20000).ToString();
 
                 // Finding customer in cache
@@ -124,7 +136,6 @@ namespace ZendoImporter
 
                 var newDebtorOrderClient = new DebtorOrderClient
                 {
-                    // TODO: Fix this bug
                     _Created = order.CreatedDate
                 };
                 newDebtorOrderClient.SetMaster(customer);

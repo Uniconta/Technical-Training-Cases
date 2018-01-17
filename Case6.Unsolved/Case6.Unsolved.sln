@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicingApp", "InvoicingApp\InvoicingApp.csproj", "{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicingAppWPF", "InvoicingAppWPF\InvoicingAppWPF.csproj", "{20A8D5F7-5C0D-4435-8FC7-501E263CE8FA}"
 EndProject
 Global
@@ -19,26 +17,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Debug|ARM.ActiveCfg = Debug|ARM
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Debug|ARM.Build.0 = Debug|ARM
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Debug|ARM.Deploy.0 = Debug|ARM
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Debug|x64.ActiveCfg = Debug|x64
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Debug|x64.Build.0 = Debug|x64
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Debug|x64.Deploy.0 = Debug|x64
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Debug|x86.ActiveCfg = Debug|x86
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Debug|x86.Build.0 = Debug|x86
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Debug|x86.Deploy.0 = Debug|x86
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Release|Any CPU.ActiveCfg = Release|x86
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Release|ARM.ActiveCfg = Release|ARM
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Release|ARM.Build.0 = Release|ARM
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Release|ARM.Deploy.0 = Release|ARM
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Release|x64.ActiveCfg = Release|x64
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Release|x64.Build.0 = Release|x64
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Release|x64.Deploy.0 = Release|x64
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Release|x86.ActiveCfg = Release|x86
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Release|x86.Build.0 = Release|x86
-		{FABB8500-EF37-4E03-A35F-97C1DA96E4A1}.Release|x86.Deploy.0 = Release|x86
 		{20A8D5F7-5C0D-4435-8FC7-501E263CE8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{20A8D5F7-5C0D-4435-8FC7-501E263CE8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20A8D5F7-5C0D-4435-8FC7-501E263CE8FA}.Debug|ARM.ActiveCfg = Debug|Any CPU

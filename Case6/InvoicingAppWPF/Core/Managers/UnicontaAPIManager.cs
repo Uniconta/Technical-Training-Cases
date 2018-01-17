@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Uniconta.API.DebtorCreditor;
@@ -12,14 +9,11 @@ using Uniconta.Common;
 using Uniconta.Common.User;
 using Uniconta.DataModel;
 
-namespace ZendoImporter.Core.Managers
+namespace InvoicingAppWPF.Core.Managers
 {
     public static class UnicontaAPIManager
     {
         // Fields
-        private static string username;
-        private static string password;
-
         private static Guid accessGuid;
         private static UnicontaConnection unicontaConnection;
         private static Session unicontaSession;
@@ -39,6 +33,10 @@ namespace ZendoImporter.Core.Managers
             unicontaSession = new Session(unicontaConnection);
         }
 
+        #region Get / Set Methods
+        public static User GetUser() { return unicontaSession.User; }
+        #endregion
+
         #region Login Methods
         public async static Task<ErrorCodes> Login(string username, string password)
         {
@@ -50,10 +48,6 @@ namespace ZendoImporter.Core.Managers
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return ErrorCodes.NoSucces;
-
-            // Saving username / password for later use
-            UnicontaAPIManager.username = username;
-            UnicontaAPIManager.password = password;
 
             return await unicontaSession.LoginAsync(username, password, LoginType.API, accessGuid);
         }
@@ -87,8 +81,6 @@ namespace ZendoImporter.Core.Managers
             }
         }
         
-        public static Company GetCompanyByName(string companyName) { return companies.SingleOrDefault(c => c.Name == companyName); }
-
         public static Company[] GetCompanies() { return companies; }
 
         public static int GetCurrentCompanyId() { return currentCompany.CompanyId; }
@@ -104,13 +96,23 @@ namespace ZendoImporter.Core.Managers
         }
         #endregion
 
-        #region CrudAPI Methods
+        #region CrudAPI Method
         public static CrudAPI GetCrudAPI(Company company = null)
         {
             if (unicontaSession == null)
                 throw new InvalidOperationException();
 
             return new CrudAPI(unicontaSession, company);
+        }
+        #endregion
+
+        #region InvoiceAPI Method
+        public static InvoiceAPI GetInvoiceAPI(Company company = null)
+        {
+            if (unicontaSession == null)
+                throw new InvalidOperationException();
+
+            return new InvoiceAPI(unicontaSession, company);
         }
         #endregion
     }

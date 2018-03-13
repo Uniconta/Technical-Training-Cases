@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Case2.ZendoPlugins.DataModels;
+using Case2.ZendoPlugins.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Uniconta.API.Plugin;
 using Uniconta.API.Service;
 using Uniconta.API.System;
 using Uniconta.Common;
-using Case2.ZendoPlugins.DataModels;
-using Case2.ZendoPlugins.Models;
 
 namespace Case2.ZendoPlugins
 {

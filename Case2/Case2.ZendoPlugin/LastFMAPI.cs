@@ -1,14 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using Case2.ZendoPlugins.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Uniconta.API.System;
-using Uniconta.Common;
-using Case2.ZendoPlugins.DataModels;
-using Case2.ZendoPlugins.Models;
 
 namespace Case2.ZendoPlugins
 {

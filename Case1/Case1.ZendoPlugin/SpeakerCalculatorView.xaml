@@ -1,0 +1,42 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Case1.ZendoPlugins"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="Case1.ZendoPlugins.SpeakerCalculatorView"
+             mc:Ignorable="d" 
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             Width="300"
+    >
+    <Grid>
+        <DockPanel LastChildFill="False" Margin="0,5,0,0">
+            <DockPanel DockPanel.Dock="Top">
+                <TextBlock x:Name="TB_OrderNumber" DockPanel.Dock="Top" Text="OrderNumber: 10" FontWeight="Bold" FontSize="20"/>
+            </DockPanel>
+            
+            <DockPanel DockPanel.Dock="Top" Margin="0,5,0,0">
+                <TextBlock x:Name="TB_PersonAmount" DockPanel.Dock="Top" Text="Persons: 10" FontWeight="Bold" />
+                <Slider x:Name="S_PersonAmount" DockPanel.Dock="Top" Margin="0,5,0,0" Minimum="10" Maximum="100"/>
+
+                <TextBlock x:Name="TB_RoomSize" DockPanel.Dock="Top" Text="Room Size (m2): 10" FontWeight="Bold" />
+                <Slider x:Name="S_RoomSize" DockPanel.Dock="Top" Margin="0,5,0,0"  Minimum="10" Maximum="500" />
+                
+                <CheckBox x:Name="CB_InDoor" Content="In-Door" FontWeight="Bold" IsChecked="True"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top" Margin="0,5,0,0">
+                <TextBlock x:Name="TB_MinScore" DockPanel.Dock="Top" Text="Score: 0" FontWeight="Bold"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top" Margin="0,5,0,0">
+                <ListView x:Name="LV_Speakers" DisplayMemberPath="KeyName" SelectionMode="Single" DockPanel.Dock="Top" Height="80"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top" Margin="0,5,0,0">
+                <Button x:Name="BTN_SelectSpeaker" Content="Select Speaker" HorizontalAlignment="Center" Width="100"/>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</UserControl>

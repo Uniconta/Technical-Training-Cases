@@ -1,0 +1,15 @@
+﻿<Window x:Class="TableCreator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TableCreator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="300">
+    <Grid>
+        <DockPanel LastChildFill="False">
+            <Button Click="Button_TrackGenres" DockPanel.Dock="Top" Content="Create Track Genres Table" Height="40" Margin="0,5,0,0"/>
+            <Button Click="Button_Tracks" DockPanel.Dock="Top" Content="Create Tracks Table" Height="40" Margin="0,5,0,0"/>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="ZendoImporter.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="LoginWindow" SizeToContent="Height" Width="300">
+    <Grid>
+        <DockPanel LastChildFill="False" Margin="5">
+            <DockPanel DockPanel.Dock="Top">
+                <Label>Username</Label>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <TextBox x:Name="TB_Username"></TextBox>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top">
+                <Label>Password</Label>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <PasswordBox x:Name="TB_Password" ></PasswordBox>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Top"  Margin="0,5,0,0">
+                <Button Click="Button_Click">Login</Button>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>

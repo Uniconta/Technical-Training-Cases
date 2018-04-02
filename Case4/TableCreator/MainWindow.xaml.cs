@@ -71,9 +71,10 @@ namespace TableCreator
             //TODO: Change to test Company
             var company = UnicontaAPIManager.GetCompanyByName("TT-WEEK3");
             var crudAPI = UnicontaAPIManager.GetCrudAPI(company);
+            
 
-            // Tracks
-            var tracks = new TableHeader
+             // Tracks
+             var tracks = new TableHeader
             {
                 // Key
                 _HasPrimaryKey = true,
@@ -112,7 +113,7 @@ namespace TableCreator
             };
             trackTitle.SetMaster(tracks);
             tracksFields.Add(trackTitle);
-
+                      
             // Artist 
             var trackArtist = new TableField
             {

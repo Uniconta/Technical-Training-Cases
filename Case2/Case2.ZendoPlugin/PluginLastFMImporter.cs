@@ -8,6 +8,7 @@ using Uniconta.API.Plugin;
 using Uniconta.API.Service;
 using Uniconta.API.System;
 using Uniconta.Common;
+using Uniconta.DataModel;
 
 namespace Case2.ZendoPlugins
 {

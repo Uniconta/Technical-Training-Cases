@@ -52,6 +52,11 @@ namespace Case1.ZendoPlugins
             
             // Parse args
             var itemList = args.Split(',').Select(x => x.Split(':')).ToList();
+            if (itemList == null)
+            {
+                MessageBox.Show("No Args");
+                return ErrorCodes.Exception;
+            }
 
             // Getting Items
             var itemFilter = "";

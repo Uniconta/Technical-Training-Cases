@@ -47,9 +47,16 @@ namespace Case2.ZendoPlugins
             // Getting tracks from LastFM
             var tracks = this.lastFMAPI.GetTop50();
             this.AddTracks(tracks);
+
+            if (OnExecute != null)
+            {
+                PluginEventArgs arg = new PluginEventArgs();
+                arg.EventType = PluginEvent.RefreshGrid;
+                OnExecute(null, arg);
+            }
+
             return ErrorCodes.Succes;
         }
-
 
         //summary
         // The GetDescription method to get the error description
@@ -67,6 +74,7 @@ namespace Case2.ZendoPlugins
         public void SetAPI(BaseAPI api)
         {
             this.crudAPI = new CrudAPI(api);
+            
         }
 
         //summary

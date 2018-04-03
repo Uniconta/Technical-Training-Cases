@@ -75,6 +75,14 @@ namespace Case1.ZendoPlugins
 
             // Writes file to disk
             // TODO: Read and then write the file to the Disk
+            
+            // Refresh Grid View
+            if (OnExecute != null)
+            {
+                PluginEventArgs arg = new PluginEventArgs();
+                arg.EventType = PluginEvent.RefreshGrid;
+                OnExecute(null, arg);
+            }
 
             return ErrorCodes.Succes;
         }

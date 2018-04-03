@@ -122,6 +122,14 @@ namespace Case1.ZendoPlugins
                 if (orderDocuments[0].DocumentType == FileextensionsTypes.JPEG)
                     File.WriteAllBytes(@"C:\src\Uniconta\Technical-Training-Cases-master\TrainingData\LIGHT-FLOORPANEL-return.jpg", fileBytes);
             }
+            
+            // Refresh Grid View
+            if (OnExecute != null)
+            {
+                PluginEventArgs arg = new PluginEventArgs();
+                arg.EventType = PluginEvent.RefreshGrid;
+                OnExecute(null, arg);
+            }
 
             return ErrorCodes.Succes;
         }

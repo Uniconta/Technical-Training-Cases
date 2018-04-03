@@ -102,12 +102,6 @@ namespace Case2.ZendoPlugins
             {
                 // Check if track already exists
                 // TODO: Check if track already exists
-                var filter = new List<PropValuePair>
-                {
-                    PropValuePair.GenereteWhereElements("Title", typeof(string), track.Name),
-                    PropValuePair.GenereteWhereElements("Artist", typeof(string), track.Artist.Name)
-                };
-                var apiTracks = await this.crudAPI.Query<Track>(filter);
 
                 if (apiTracks.Length == 0)
                 {
@@ -148,11 +142,6 @@ namespace Case2.ZendoPlugins
 
             // Call Insert API
             // TODO: Call Insert API
-            var errorCode = await crudAPI.Insert(newTracks);
-            if(errorCode == ErrorCodes.Succes)
-            {
-                MessageBox.Show($"{newTracks.Count} new tracks was added.");
-            }
         }
 
         private async Task<TrackGenre> FindGenre(string genre)

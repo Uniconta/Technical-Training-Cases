@@ -27,7 +27,7 @@ namespace TableCreator.Core.Managers
                 throw new InvalidOperationException();
 
             // TODO: Change API Key
-            accessGuid = new Guid("e7cb2d3d-3045-4102-ab26-6483e3b2be1e");
+            accessGuid = new Guid(00000000-0000-0000-0000-000000000000");
             unicontaConnection = new UnicontaConnection(APITarget.Live);
             unicontaSession = new Session(unicontaConnection);
         }
